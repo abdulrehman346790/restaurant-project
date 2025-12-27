@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant AR Menu - Interactive 3D Dining Experience</title>
+    <meta name="description" content="Experience our menu in 3D and Augmented Reality. View dishes before you order!">
+
+    <!-- Google Model Viewer for 3D and AR -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
+    <!-- Lucide Icons - Using specific version for reliability -->
+    <script src="https://unpkg.com/lucide@0.294.0/dist/umd/lucide.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="utensils-crossed"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>AR Menu</h1>
+                        <p>Interactive Dining</p>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="searchInput" placeholder="Search dishes...">
+                </div>
+
+                <div class="header-badge">
+                    <span class="ar-badge">AR Enabled</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Experience Food in 3D</h2>
+                <p class="hero-subtitle">See what you're ordering before it arrives. View our dishes in stunning 3D and
+                    place them in your space using AR.</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i data-lucide="cube"></i>
+                        <span>360° View</span>
+                    </div>
+                    <div class="feature">
+                        <i data-lucide="smartphone"></i>
+                        <span>AR Preview</span>
+                    </div>
+                    <div class="feature">
+                        <i data-lucide="info"></i>
+                        <span>Detailed Info</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">
+                    <i data-lucide="utensils"></i>
+                    All Dishes
+                </button>
+                <button class="category-tab" data-category="appetizers">
+                    <i data-lucide="salad"></i>
+                    Appetizers
+                </button>
+                <button class="category-tab" data-category="mains">
+                    <i data-lucide="beef"></i>
+                    Main Course
+                </button>
+                <button class="category-tab" data-category="desserts">
+                    <i data-lucide="cake"></i>
+                    Desserts
+                </button>
+                <button class="category-tab" data-category="drinks">
+                    <i data-lucide="coffee"></i>
+                    Drinks
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Grid -->
+    <main class="menu-section">
+        <div class="container">
+            <div id="menuGrid" class="menu-grid">
+                <!-- Dishes will be dynamically loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- 3D Model Viewer Modal -->
+    <div id="modelModal" class="modal">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button class="back-button" id="closeModal">
+                    <i data-lucide="arrow-left"></i>
+                    Back to Menu
+                </button>
+                <div class="modal-title">
+                    <h2 id="modalDishName">Dish Name</h2>
+                    <p id="modalDishCategory">Category</p>
+                </div>
+                <div class="model-badge">
+                    <i data-lucide="cube"></i>
+                    3D Model
+                </div>
+            </div>
+
+            <!-- 3D Model Viewer -->
+            <div class="model-viewer-container">
+                <model-viewer id="dishModelViewer" camera-controls auto-rotate ar
+                    ar-modes="webxr scene-viewer quick-look" shadow-intensity="2" shadow-softness="0.8" exposure="1.2"
+                    ar-placement="floor" alt="3D dish model">
+                    <div slot="poster" class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Loading 3D Model...</p>
+                    </div>
+
+                    <!-- AR Instructions -->
+                    <div class="ar-prompt">
+                        <i data-lucide="smartphone"></i>
+                        <span>Tap the AR button to view in your space!</span>
+                    </div>
+                </model-viewer>
+            </div>
+
+            <!-- Dish Information Panel -->
+            <div class="dish-info-panel">
+                <div class="info-section">
+                    <h3>Description</h3>
+                    <p id="dishDescription">Dish description will appear here</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-section">
+                        <h3>Ingredients</h3>
+                        <ul id="dishIngredients" class="ingredients-list">
+                            <!-- Ingredients will be added dynamically -->
+                        </ul>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>Details</h3>
+                        <div class="detail-tags">
+                            <span class="tag" id="dishCalories">0 cal</span>
+                            <span class="tag" id="dishPrepTime">0 min</span>
+                            <span class="tag" id="dishSpicy"></span>
+                        </div>
+                        <div class="allergen-info" id="allergenInfo">
+                            <i data-lucide="alert-circle"></i>
+                            <span id="allergens">No allergens</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-action">
+                    <div class="price">
+                        <span class="price-label">Price</span>
+                        <span class="price-value" id="dishPrice">$0.00</span>
+                    </div>
+                    <button class="order-button">
+                        <i data-lucide="shopping-cart"></i>
+                        Add to Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>💡 AR works on Android Chrome & iOS Safari • 3D models powered by Sketchfab</p>
+            <p class="footer-note">Prototype Demo - Interactive Restaurant Menu System</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
