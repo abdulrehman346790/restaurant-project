@@ -793,7 +793,7 @@ model-viewer {
     }
 
     .menu-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
 
@@ -809,10 +809,13 @@ model-viewer {
     .order-button {
         width: 100%;
         justify-content: center;
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
     }
 
     .modal-header {
         flex-wrap: wrap;
+        padding: 1rem;
     }
 
     .header-content {
@@ -829,23 +832,28 @@ model-viewer {
     }
 
     .modal {
-        align-items: flex-end;
-        /* Sheet style on mobile */
+        align-items: flex-start;
     }
 
     .modal-content {
-        height: 95%;
-        /* Almost full screen */
-        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        height: 100%;
+        border-radius: 0;
     }
 
     .model-viewer-container {
-        min-height: 40vh;
-        /* Adjust for mobile height */
+        min-height: 50vh;
+        max-height: 50vh;
+    }
+
+    model-viewer {
+        min-height: 50vh;
+        max-height: 50vh;
     }
 
     .dish-info-panel {
         padding: var(--spacing-lg) var(--spacing-md);
+        max-height: 50vh;
+        overflow-y: auto;
     }
 
     .price-action {
@@ -854,12 +862,25 @@ model-viewer {
         z-index: 20;
         background: var(--color-bg-card);
         backdrop-filter: blur(20px);
-        margin: 0 -1.5rem -2rem -1.5rem;
-        /* Negative margin to stretch */
-        padding: 1rem 1.5rem 2rem 1.5rem;
-        /* Extra padding for safe area */
+        margin: 0;
+        padding: 1rem 1.5rem;
         border-radius: 0;
         border-top: 1px solid var(--color-border);
+    }
+
+    .modal-title h2 {
+        font-size: 1.25rem;
+    }
+
+    .back-button {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .ar-prompt {
+        bottom: 80px;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.8125rem;
     }
 }
 
@@ -880,7 +901,6 @@ model-viewer {
     .category-tabs {
         padding: 0 var(--spacing-md) var(--spacing-sm) var(--spacing-md);
         margin: 0 -1.5rem;
-        /* Full width scroll */
     }
 
     .category-tab:first-child {
@@ -892,5 +912,20 @@ model-viewer {
     .order-button,
     .back-button {
         padding: 0.875rem 1.25rem;
+        min-height: 44px;
+    }
+
+    .dish-card {
+        border-radius: var(--radius-md);
+    }
+
+    .model-viewer-container {
+        min-height: 45vh;
+        max-height: 45vh;
+    }
+
+    model-viewer {
+        min-height: 45vh;
+        max-height: 45vh;
     }
 }

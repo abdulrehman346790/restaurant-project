@@ -334,18 +334,18 @@ function openDishModal(dishId) {
 // This shows real food instead of astronaut/helmet placeholders
 // NOTE: All dishes use the same model for demo - replace with dish-specific scans for production
 const FREE_FOOD_MODELS = {
-    'bruschetta bread': './models/cheesecake.glb',
-    'spring roll food': './models/cheesecake.glb',
-    'garlic bread': './models/cheesecake.glb',
-    'grilled steak plate': './models/cheesecake.glb',
-    'pasta spaghetti': './models/cheesecake.glb',
-    'hamburger cheeseburger': './models/cheesecake.glb',
-    'grilled salmon fish': './models/cheesecake.glb',
+    'bruschetta bread': './models/pizza.glb',
+    'spring roll food': './models/pizza.glb',
+    'garlic bread': './models/pizza.glb',
+    'grilled steak plate': './models/pizza.glb',
+    'pasta spaghetti': './models/pizza.glb',
+    'hamburger cheeseburger': './models/pizza.glb',
+    'grilled salmon fish': './models/pizza.glb',
     'chocolate cake dessert': './models/cheesecake.glb',
     'tiramisu dessert': './models/cheesecake.glb',
     'cheesecake dessert': './models/cheesecake.glb',
-    'cocktail drink glass': './models/cheesecake.glb',
-    'coffee cappuccino cup': './models/cheesecake.glb'
+    'cocktail drink glass': './models/pizza.glb',
+    'coffee cappuccino cup': './models/pizza.glb'
 };
 
 async function load3DModel(modelPath, dishName) {
